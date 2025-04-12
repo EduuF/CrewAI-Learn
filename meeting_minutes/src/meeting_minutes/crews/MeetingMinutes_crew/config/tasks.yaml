@@ -1,0 +1,33 @@
+meeting_minutes_summary_task:
+  description: >
+    Resuma a transcrição da reunião no seguinte resumo:
+    {transcript}
+
+    Escreva o resumo em um arquivo chamado "summary.txt" no diretório "meeting_minutes". Isso é fornecido pela tool.
+
+    Escreva os itens de ação em um arquivo chamado "action_items.txt" no diretório "meeting_minutes". Isso é fornecido pela tools.
+
+    Gostaria que você retornasse os itens de ação da transcrição da reunião no seguinte formato:
+    - Item de ação 1
+    - Item de ação 2
+    - ...
+
+    Também gostaria que você analisasse o sentimento da transcrição da reunião e escrevesse em um arquivo chamado "sentiment.txt" no diretório "meeting_minutes". Isso é fornecido pela tool.
+
+  expected_output: >
+    Um resumo da transcrição da reunião e uma lista de itens de ação.
+  agent: meeting_minutes_summarizer
+
+meeting_minutes_writing_task:
+  description: >
+    Escreva a ata da reunião com base no resumo, itens de ação e sentimento. Isso deve fornecer tudo o que é necessário saber com base no resumo e nos itens de ação.
+    Coloque tudo em um bonito documento markdown.
+
+    - Use a data de hoje como data da reunião
+    - Use o nome da empresa TylerAI como nome da empresa
+    - Use Tyler como o nome do organizador
+    - Crie uma lista de participantes a partir da transcrição (invente alguns se necessário)
+    - A reunião foi realizada no Zoom
+  expected_output: >
+    Um documento de ata de reunião
+  agent: meeting_minutes_writer
